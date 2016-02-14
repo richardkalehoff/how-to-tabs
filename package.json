@@ -1,6 +1,9 @@
 {
   "devDependencies": {
     "chai": "^3.5.0",
-    "http-server": "^0.8.5"
+    "http-server": "^0.8.5",
+    "karma": "^0.13.21",
+    "karma-mocha": "^0.2.1",
+    "mocha": "^2.4.5"
   }
 }
