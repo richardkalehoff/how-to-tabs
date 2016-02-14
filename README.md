@@ -6,6 +6,7 @@ This project builds up tabbing functionality. This is a project built from the "
 
 * install [Git](https://git-scm.com/)
 * install [Node.js](https://nodejs.org/)
+* install [Mocha](https://mochajs.org/)
 
 ### Running the build
 
