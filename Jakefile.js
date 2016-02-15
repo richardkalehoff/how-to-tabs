@@ -1,6 +1,8 @@
 ( function() {
     'use strict';
 
+    var shell = require( 'shelljs' );
+
     var DIST_DIR = 'generated/dist';
 
     desc( 'Start the Karma server' );
@@ -21,6 +23,7 @@
     desc( 'Erase all generated files' );
     task( 'clean', function() {
         console.log( 'cleaning...' );
+        shell.rm( '-rf', 'generated' );
     } );
 
     desc( 'Run tests' );
