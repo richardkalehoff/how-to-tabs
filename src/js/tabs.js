@@ -1,7 +1,8 @@
 ( function() {
     'use strict';
 
-    exports.init = function init() {
-        console.log( 'initializing tabs' );
+    exports.init = function init( element ) {
+        element.style.display = 'none';
     };
+
 } )();
