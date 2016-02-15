@@ -46,7 +46,7 @@
             { interactive: true },
             complete
         );
-    } );
+    }, { async: true } );
 
     directory( DIST_DIR );
 
@@ -56,6 +56,6 @@
             { interactive: true },
             complete
         );
-    } );
+    }, { async: true } );
 
 } )();
