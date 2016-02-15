@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "browserify": "^13.0.0",
     "chai": "^3.5.0",
     "http-server": "^0.8.5",
     "karma": "^0.13.21",
