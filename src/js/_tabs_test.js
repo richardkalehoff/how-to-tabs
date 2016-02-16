@@ -6,25 +6,24 @@
 
     describe( 'Tabs', function() {
 
-        it( 'hides an element', function() {
+        it( 'sets a class on an element', function() {
             var element = addElement( 'div' );
 
-            tabs.init( element );
+            tabs.init( element, 'someClass' );
 
-            assert.equal( getDisplayProperty( element ), 'none' );
+            assert.equal( getClass( element ), 'someClass' );
 
             removeElement( element );
         } );
+
+        function getClass( element ) {
+            return element.getAttribute( 'class' );
+        }
 
         function addElement( tagName ) {
             var element = document.createElement( tagName );
             document.body.appendChild( element );
             return element;
-        }
-
-        function getDisplayProperty( element ) {
-            var style = getComputedStyle( element );
-            return style.getPropertyValue( 'display' );
         }
 
         function removeElement( element ) {

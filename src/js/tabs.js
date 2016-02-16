@@ -1,8 +1,8 @@
 ( function() {
     'use strict';
 
-    exports.init = function init( element ) {
-        element.style.display = 'none';
+    exports.init = function init( element, className ) {
+        element.setAttribute( 'class', className );
     };
 
 } )();
