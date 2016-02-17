@@ -16,24 +16,36 @@
             removeElement( container );
         } );
 
-        it( 'sets a class on an element when that element has no existing classes', function() {
+        it( 'hides an element by setting a class', function() {
             var element = addElement( 'div' );
 
-            tabs.init( element, 'someClass' );
+            tabs.init( [ element ], 'someClass' );
 
-            assert.equal( getClass( element ), 'someClass' );
+            assert.equal( getClasses( element ), 'someClass' );
         } );
 
-        it( 'sets a class on an element without erasing existing classes', function() {
+        it( 'hides multiple elements', function() {
+            var element1 = addElement( 'div' );
+            var element2 = addElement( 'div' );
+            var element3 = addElement( 'div' );
+
+            tabs.init( [ element1, element2, element3 ], 'hideClass' );
+
+            assert.equal( getClasses( element1 ), 'hideClass', 'element 1 needs "hideClass"' );
+            assert.equal( getClasses( element2 ), 'hideClass', 'element 2 needs "hideClass"' );
+            assert.equal( getClasses( element3 ), 'hideClass', 'element 3 needs "hideClass"' );
+        } );
+
+        it( 'preserves existing classes when hiding an element', function() {
             var element = addElement( 'div' );
             element.setAttribute( 'class', 'existingClass' );
 
-            tabs.init( element, 'newClass' );
+            tabs.init( [ element ], 'newClass' );
 
-            assert.equal( getClass( element ), 'existingClass newClass' );
+            assert.equal( getClasses( element ), 'existingClass newClass' );
         } );
 
-        function getClass( element ) {
+        function getClasses( element ) {
             return element.getAttribute( 'class' );
         }
 

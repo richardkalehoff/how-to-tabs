@@ -1,8 +1,10 @@
 ( function() {
     'use strict';
 
-    exports.init = function init( element, className ) {
-        element.classList.add( className );
+    exports.init = function init( elementList, className ) {
+        elementList.forEach( function( element ) {
+            element.classList.add( className );
+        } );
     };
 
 } )();
