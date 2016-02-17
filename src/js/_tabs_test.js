@@ -5,6 +5,16 @@
     var tabs = require( './tabs.js' );
 
     describe( 'Tabs', function() {
+        var container;
+
+        beforeEach( function() {
+            container = document.createElement( 'div' );
+            document.body.appendChild( container );
+        } );
+
+        afterEach( function() {
+            removeElement( container );
+        } );
 
         it( 'sets a class on an element when that element has no existing classes', function() {
             var element = addElement( 'div' );
@@ -12,8 +22,6 @@
             tabs.init( element, 'someClass' );
 
             assert.equal( getClass( element ), 'someClass' );
-
-            removeElement( element );
         } );
 
         it( 'sets a class on an element without erasing existing classes', function() {
@@ -23,8 +31,6 @@
             tabs.init( element, 'newClass' );
 
             assert.equal( getClass( element ), 'existingClass newClass' );
-
-            removeElement( element );
         } );
 
         function getClass( element ) {
@@ -33,7 +39,7 @@
 
         function addElement( tagName ) {
             var element = document.createElement( tagName );
-            document.body.appendChild( element );
+            container.appendChild( element );
             return element;
         }
 
