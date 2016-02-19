@@ -4,24 +4,24 @@
     exports.init = function init( options ) {
         var tabs = options.tabs,
             content = options.content,
-            defaultElement = options.default,
+            defaultTab = options.default,
             contentHideClass = options.contentHideClass,
             activeTabClass = options.activeTabClass;
 
         checkOption( tabs, 'options.tabs' );
         checkOption( content, 'options.content' );
-        checkOption( defaultElement, 'options.default' );
+        checkOption( defaultTab, 'options.default' );
         checkOption( contentHideClass, 'options.contentHideClass' );
         checkOption( activeTabClass, 'options.activeTabClass' );
+
+        var activeIndex = findIndexOfDefaultElement( tabs, defaultTab );
+        var defaultContent = content[ activeIndex ];
 
         content.forEach( function( element ) {
             element.classList.add( contentHideClass );
         } );
-        defaultElement.classList.remove( contentHideClass );
-
-        var activeIndex = findIndexOfDefaultElement( content, defaultElement );
-
-        tabs[ activeIndex ].classList.add( activeTabClass );
+        defaultContent.classList.remove( contentHideClass );
+        defaultTab.classList.add( activeTabClass );
     };
 
     function findIndexOfDefaultElement( contentElements, defaultContentElement ) {
