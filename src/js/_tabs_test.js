@@ -38,24 +38,6 @@
             assert.equal( getClasses( content3 ), 'hideClass', 'element 3 should be hidden' );
         } );
 
-        it( 'preserves existing classes when hiding a content element', function() {
-            var defaultTab = createTab();
-
-            var defaultContent = createTabContent();
-            var hiddenContent = createTabContent();
-            hiddenContent.setAttribute( 'class', 'existingClass' );
-
-            tabs.init( {
-                tabs: [ defaultTab, createTab() ],
-                content: [ defaultContent, hiddenContent ],
-                defaultTab: defaultTab,
-                hiddenContentClass: 'newClass',
-                activeTabClass: IRRELEVANT
-            } );
-
-            assert.equal( getClasses( hiddenContent ), 'existingClass newClass' );
-        } );
-
         it( 'it styles the default tab with a class', function() {
             var tab1 = createTab();
             var defaultTab = createTab();
@@ -75,9 +57,24 @@
             assert.equal( getClasses( tab3 ), null, 'tab3 should not be styled' );
         } );
 
-        it( 'preserves existing classes on the active tab', function() {
+        it( 'preserves existing classes when adding new classes', function() {
+            var defaultTab = createTab();
+            defaultTab.setAttribute( 'class', 'existingTabClass' );
 
-            // TODO
+            var defaultContent = createTabContent();
+            var hiddenContent = createTabContent();
+            hiddenContent.setAttribute( 'class', 'existingContentClass' );
+
+            tabs.init( {
+                tabs: [ defaultTab, createTab() ],
+                content: [ defaultContent, hiddenContent ],
+                defaultTab: defaultTab,
+                hiddenContentClass: 'hiddenContent',
+                activeTabClass: 'activeTab'
+            } );
+
+            assert.equal( getClasses( defaultTab ), 'existingTabClass activeTab', 'tab should preserve existing classes' );
+            assert.equal( getClasses( hiddenContent ), 'existingContentClass hiddenContent', 'content should preserve existing classes' );
         } );
 
         function getClasses( element ) {
