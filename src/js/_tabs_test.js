@@ -52,19 +52,23 @@
             assert.equal( getClasses( hiddenContent ), 'existingClass newClass' );
         } );
 
-        it( 'it styles the active tab with a class', function() {
-            var defaultContent = createTabContent();
+        it( 'it styles the default tab with a class', function() {
+            var tab1 = createTab();
             var defaultTab = createTab();
+            var tab3 = createTab();
+            var defaultContent = createTabContent();
 
             tabs.init( {
-                tabs: [ defaultTab ],
-                content: [ defaultContent ],
+                tabs: [ tab1, defaultTab, tab3 ],
+                content: [ createTabContent(), defaultContent, createTabContent() ],
                 default: defaultContent,
                 contentHideClass: IRRELEVANT,
                 activeTabClass: 'activeTab'
             } );
 
-            assert.equal( getClasses( defaultTab ), 'activeTab' );
+            assert.equal( getClasses( tab1 ), null, 'tab1 should not be styled' );
+            assert.equal( getClasses( defaultTab ), 'activeTab', 'default tab should be styled' );
+            assert.equal( getClasses( tab3 ), null, 'tab3 should not be styled' );
         } );
 
         it( 'preserves existing classes on the active tab', function() {

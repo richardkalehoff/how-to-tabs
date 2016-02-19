@@ -29,7 +29,19 @@
         } );
         defaultElement.classList.remove( contentHideClass );
 
-        tabs[ 0 ].classList.add( activeTabClass );
+        var activeIndex = findIndexOfDefaultElement( content, defaultElement );
+
+        tabs[ activeIndex ].classList.add( activeTabClass );
     };
+
+    function findIndexOfDefaultElement( contentElements, defaultContentElement ) {
+        for ( var i = 0; i < contentElements.length; i++ ) {
+            if ( contentElements[ i ] === defaultContentElement ) {
+                return i;
+            }
+        }
+
+        throw new Error( 'Could not find default in list' );
+    }
 
 } )();
