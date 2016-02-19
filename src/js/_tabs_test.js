@@ -29,7 +29,7 @@
                 tabs: [ createTab(), defaultTab, createTab() ],
                 content: [ content1, defaultContent, content3 ],
                 defaultTab: defaultTab,
-                contentHideClass: 'hideClass',
+                hiddenContentClass: 'hideClass',
                 activeTabClass: IRRELEVANT
             } );
 
@@ -49,7 +49,7 @@
                 tabs: [ defaultTab, createTab() ],
                 content: [ defaultContent, hiddenContent ],
                 defaultTab: defaultTab,
-                contentHideClass: 'newClass',
+                hiddenContentClass: 'newClass',
                 activeTabClass: IRRELEVANT
             } );
 
@@ -66,7 +66,7 @@
                 tabs: [ tab1, defaultTab, tab3 ],
                 content: [ createTabContent(), defaultContent, createTabContent() ],
                 defaultTab: defaultTab,
-                contentHideClass: IRRELEVANT,
+                hiddenContentClass: IRRELEVANT,
                 activeTabClass: 'activeTab'
             } );
 

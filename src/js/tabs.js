@@ -5,22 +5,22 @@
         var tabs = options.tabs,
             content = options.content,
             defaultTab = options.defaultTab,
-            contentHideClass = options.contentHideClass,
+            hiddenContentClass = options.hiddenContentClass,
             activeTabClass = options.activeTabClass;
 
         checkOption( tabs, 'options.tabs' );
         checkOption( content, 'options.content' );
         checkOption( defaultTab, 'options.defaultTab' );
-        checkOption( contentHideClass, 'options.contentHideClass' );
+        checkOption( hiddenContentClass, 'options.hiddenContentClass' );
         checkOption( activeTabClass, 'options.activeTabClass' );
 
         var activeIndex = findIndexOfDefaultElement( tabs, defaultTab );
         var defaultContent = content[ activeIndex ];
 
         content.forEach( function( element ) {
-            element.classList.add( contentHideClass );
+            element.classList.add( hiddenContentClass );
         } );
-        defaultContent.classList.remove( contentHideClass );
+        defaultContent.classList.remove( hiddenContentClass );
         defaultTab.classList.add( activeTabClass );
     };
 
