@@ -28,7 +28,7 @@
             tabs.init( {
                 tabs: [ createTab(), defaultTab, createTab() ],
                 content: [ content1, defaultContent, content3 ],
-                default: defaultTab,
+                defaultTab: defaultTab,
                 contentHideClass: 'hideClass',
                 activeTabClass: IRRELEVANT
             } );
@@ -48,7 +48,7 @@
             tabs.init( {
                 tabs: [ defaultTab, createTab() ],
                 content: [ defaultContent, hiddenContent ],
-                default: defaultTab,
+                defaultTab: defaultTab,
                 contentHideClass: 'newClass',
                 activeTabClass: IRRELEVANT
             } );
@@ -65,7 +65,7 @@
             tabs.init( {
                 tabs: [ tab1, defaultTab, tab3 ],
                 content: [ createTabContent(), defaultContent, createTabContent() ],
-                default: defaultTab,
+                defaultTab: defaultTab,
                 contentHideClass: IRRELEVANT,
                 activeTabClass: 'activeTab'
             } );

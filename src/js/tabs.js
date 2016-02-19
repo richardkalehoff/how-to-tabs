@@ -4,13 +4,13 @@
     exports.init = function init( options ) {
         var tabs = options.tabs,
             content = options.content,
-            defaultTab = options.default,
+            defaultTab = options.defaultTab,
             contentHideClass = options.contentHideClass,
             activeTabClass = options.activeTabClass;
 
         checkOption( tabs, 'options.tabs' );
         checkOption( content, 'options.content' );
-        checkOption( defaultTab, 'options.default' );
+        checkOption( defaultTab, 'options.defaultTab' );
         checkOption( contentHideClass, 'options.contentHideClass' );
         checkOption( activeTabClass, 'options.activeTabClass' );
 
