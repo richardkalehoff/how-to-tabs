@@ -14,15 +14,19 @@
         checkOption( hiddenContentClass, 'options.hiddenContentClass' );
         checkOption( activeTabClass, 'options.activeTabClass' );
 
-        var activeIndex = findIndexOfDefaultElement( tabs, defaultTab );
+        showTab( defaultTab, tabs, content, activeTabClass, hiddenContentClass );
+    };
+
+    function showTab( tabToShow, tabs, content, activeTabClass, hiddenContentClass ) {
+        var activeIndex = findIndexOfDefaultElement( tabs, tabToShow );
         var defaultContent = content[ activeIndex ];
 
         content.forEach( function( element ) {
             element.classList.add( hiddenContentClass );
         } );
         defaultContent.classList.remove( hiddenContentClass );
-        defaultTab.classList.add( activeTabClass );
-    };
+        tabToShow.classList.add( activeTabClass );
+    }
 
     function findIndexOfDefaultElement( contentElements, defaultContentElement ) {
         for ( var i = 0; i < contentElements.length; i++ ) {
