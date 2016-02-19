@@ -5,6 +5,8 @@
     var tabs = require( './tabs.js' );
 
     describe( 'Tabs', function() {
+        var IRRELEVANT = 'irrelevant';
+
         var container;
 
         beforeEach( function() {
@@ -17,55 +19,48 @@
         } );
 
         it( 'hides all content elements except the default upon initilization', function() {
-            var tab1 = addElement( 'div' );
-            var defaultTab = addElement( 'div' );
-            var tab3 = addElement( 'div' );
-
-            var element1 = addElement( 'div' );
-            var defaultElement = addElement( 'div' );
-            var element3 = addElement( 'div' );
+            var content1 = createTabContent();
+            var defaultContent = createTabContent();
+            var content3 = createTabContent();
 
             tabs.init( {
-                tabs: [ tab1, defaultTab, tab3 ],
-                content: [ element1, defaultElement, element3 ],
-                default: defaultElement,
+                tabs: [ createTab(), createTab(), createTab() ],
+                content: [ content1, defaultContent, content3 ],
+                default: defaultContent,
                 contentHideClass: 'hideClass',
-                activeTabClass: 'activeTab'
+                activeTabClass: IRRELEVANT
             } );
 
-            assert.equal( getClasses( element1 ), 'hideClass', 'element 1 should be hidden' );
-            assert.equal( getClasses( defaultElement ), '', 'default element and should not be hidden' );
-            assert.equal( getClasses( element3 ), 'hideClass', 'element 3 should be hidden' );
+            assert.equal( getClasses( content1 ), 'hideClass', 'element 1 should be hidden' );
+            assert.equal( getClasses( defaultContent ), '', 'default element and should not be hidden' );
+            assert.equal( getClasses( content3 ), 'hideClass', 'element 3 should be hidden' );
         } );
 
         it( 'preserves existing classes when hiding a content element', function() {
-            var defaultTab = addElement( 'div' );
-            var hiddenTab = addElement( 'div' );
-
-            var defaultElement = addElement( 'div' );
-            var hiddenElement = addElement( 'div' );
-            hiddenElement.setAttribute( 'class', 'existingClass' );
+            var defaultContent = createTabContent();
+            var hiddenContent = createTabContent();
+            hiddenContent.setAttribute( 'class', 'existingClass' );
 
             tabs.init( {
-                tabs: [ defaultTab, hiddenTab ],
-                content: [ defaultElement, hiddenElement ],
-                default: defaultElement,
+                tabs: [ createTab(), createTab() ],
+                content: [ defaultContent, hiddenContent ],
+                default: defaultContent,
                 contentHideClass: 'newClass',
-                activeTabClass: 'activeTab'
+                activeTabClass: IRRELEVANT
             } );
 
-            assert.equal( getClasses( hiddenElement ), 'existingClass newClass' );
+            assert.equal( getClasses( hiddenContent ), 'existingClass newClass' );
         } );
 
         it( 'it styles the active tab with a class', function() {
-            var defaultElement = addElement( 'div' );
-            var defaultTab = addElement( 'div' );
+            var defaultContent = createTabContent();
+            var defaultTab = createTab();
 
             tabs.init( {
                 tabs: [ defaultTab ],
-                content: [ defaultElement ],
-                default: defaultElement,
-                contentHideClass: 'ignored',
+                content: [ defaultContent ],
+                default: defaultContent,
+                contentHideClass: IRRELEVANT,
                 activeTabClass: 'activeTab'
             } );
 
@@ -79,6 +74,18 @@
 
         function getClasses( element ) {
             return element.getAttribute( 'class' );
+        }
+
+        function createTab() {
+            var tab = document.createElement( 'div' );
+            tab.innerHTML = 'tab';
+            return tab;
+        }
+
+        function createTabContent() {
+            var tab = document.createElement( 'div' );
+            tab.innerHTML = 'content';
+            return tab;
         }
 
         function addElement( tagName ) {
