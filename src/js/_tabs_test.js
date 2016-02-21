@@ -6,6 +6,7 @@
 
     describe( 'Tabs', function() {
 
+        var ACTIVE_TAB = 'activeTab';
         var HIDDEN_CONTENT = 'hideClass';
         var IRRELEVANT = 'irrelevant';
 
@@ -54,9 +55,9 @@
                 activeTabClass: 'activeTab'
             } );
 
-            assert.equal( getClasses( tab1 ), null, 'tab1 should not be styled' );
-            assert.equal( getClasses( defaultTab ), 'activeTab', 'default tab should be styled' );
-            assert.equal( getClasses( tab3 ), null, 'tab3 should not be styled' );
+            assertTabInactive( tab1, 'tab 1' );
+            assertTabActive( defaultTab, 'default tab' );
+            assertTabInactive( tab3, 'tab 3' );
         } );
 
         it( 'switch content when tab is clicked', function() {
@@ -103,6 +104,14 @@
             assert.equal( getClasses( defaultTab ), 'existingTabClass activeTab', 'tab should preserve existing classes' );
             assert.equal( getClasses( hiddenContent ), 'existingContentClass hiddenContent', 'content should preserve existing classes' );
         } );
+
+        function assertTabInactive( tab, tabName ) {
+            assert.equal( getClasses( tab ), null, tabName + ' should not be active' );
+        }
+
+        function assertTabActive( tab, tabName ) {
+            assert.equal( getClasses( tab ), ACTIVE_TAB, tabName + ' should be active' );
+        }
 
         function assertContentVisible( element ) {
             assert.equal( getClasses( element ), '', element + ' should be visible' );
