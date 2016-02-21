@@ -88,6 +88,26 @@
             assertContentVisible( content3, 'content 3 should be able to click multiple tabs' );
         } );
 
+        it( 'handles clicks on sub-elements within tabs', function() {
+            var defaultTab = createTab();
+
+            var complexTab = addElement( 'div' );
+            complexTab.innerHTML = '<a id="link">link</a>';
+
+            var link = document.getElementById( 'link' );
+
+            tabs.init( {
+                tabs: [ defaultTab, complexTab ],
+                content: [ createTabContent(), createTabContent() ],
+                defaultTab: defaultTab,
+                activeTabClass: ACTIVE_TAB,
+                hiddenContentClass: HIDDEN_CONTENT
+            } );
+
+            link.click();
+            assertTabActive( complexTab, 'the complex tab is active' );
+        } );
+
         it( 'preserves existing classes when adding new classes', function() {
             var defaultTab = createTab();
             defaultTab.setAttribute( 'class', 'existingTabClass' );

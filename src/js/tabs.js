@@ -14,8 +14,8 @@
 
     function handleClicks( options ) {
         options.tabs.forEach( function( tab ) {
-            tab.addEventListener( 'click', function( event ) {
-                showTab( event.target, options );
+            tab.addEventListener( 'click', function() {
+                showTab( tab, options );
             } );
         } );
     }
